@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Install Complete</title>
+    </head>
+    <body>
+        <script>
+            // Extract the code from the URL
+            const urlParams = new URLSearchParams(window.location.search);
+            const code = urlParams.get("code");
+
+            if (code) {
+                // Send the code to the server
+                fetch("/install-complete", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify({ code: code }),
+                })
+                    .then((response) => response.json())
+                    .then((data) => {
+                        console.log("Success:", data);
+                        // Optionally, you can redirect to another page or show a success message here
+                    })
+                    .catch((error) => {
+                        console.error("Error:", error);
+                    });
+            } else {
+                console.error("No code found in the URL");
+            }
+        </script>
+        <h1>Install Complete.</h1>
+    </body>
+</html>

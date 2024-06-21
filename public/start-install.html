@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Install Page</title>
+    </head>
+    <body>
+        <script>
+            // Define the components of the authentication URL
+            const client_id = "{{client_id}}";
+            const scopes = [
+                "conversations/message.readonly",
+                "contacts.readonly",
+                "contacts.write",
+                "oauth.readonly",
+                "oauth.write",
+            ];
+            const scope = scopes.map(encodeURIComponent).join("%20");
+
+            // Get the current domain root
+            const redirectUri = `${window.location.origin}/install-complete`;
+
+            // Construct the full authentication URL
+            const authUrl = `https://marketplace.gohighlevel.com/oauth/chooselocation?response_type=code&client_id=${client_id}&redirect_uri=${encodeURIComponent(redirectUri)}&scope=${scope}`;
+
+            // Redirect to the authentication URL
+            window.location.href = authUrl;
+        </script>
+    </body>
+</html>
