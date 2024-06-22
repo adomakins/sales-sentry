@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 8080;
 app.use(express.json());
 app.use(cors());
 
-// STATIC PAGE SERVERS
+// STATIC PAGE SERVERS (penis)
 
 // Serve the static files from the public directory
 app.use(express.static(path.join(__dirname, "public")));
